@@ -33,7 +33,29 @@ public static void writeDataToFile(ArrayList<String[]> csvdata, String filename)
     myFile.close();
 }
 
-public 
+public static String yearWithMostTurbines(ArrayList<String[]> windData) {
+    ArrayList<String> years = new ArrayList<>(); 
+    ArrayList<Integer> yearCounts = new ArrayList<>(); 
+
+    for (String[] row : windData) {  
+        int index = years.indexOf(year);
+        if (index != -1) {
+            yearCounts.set(index, yearCounts.get(index) + turbines);
+        } else {
+            years.add(year);
+            yearCounts.add(turbines);
+        }
+    }
+
+    int max = 0;
+    for (int i = 1; i < yearCounts.size(); i++) {
+        if (yearCounts.get(i) > yearCounts.get(max)) {
+            max = i;
+        }
+    }
+
+    return years;
+}
 
 public static void main(String[] args) {
     ArrayList<String[]> windData = new ArrayList<String[]>();
