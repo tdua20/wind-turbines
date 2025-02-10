@@ -38,7 +38,7 @@ public static String yearWithMostTurbines(ArrayList<String[]> windData) {
     ArrayList<Integer> yearCounts = new ArrayList<>(); 
 
     for (String[] row : windData) {  
-        String year = row[2].replace("\"", "");  // Extract year
+        String year = row[2].replace("\"", ""); 
         int turbines = Integer.parseInt(row[9].replace("\"", ""));
         int index = years.indexOf(year);
         if (index != -1) {
