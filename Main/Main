@@ -38,6 +38,8 @@ public static String yearWithMostTurbines(ArrayList<String[]> windData) {
     ArrayList<Integer> yearCounts = new ArrayList<>(); 
 
     for (String[] row : windData) {  
+        String year = row[2].replace("\"", "");  // Extract year
+        int turbines = Integer.parseInt(row[9].replace("\"", ""));
         int index = years.indexOf(year);
         if (index != -1) {
             yearCounts.set(index, yearCounts.get(index) + turbines);
@@ -54,7 +56,7 @@ public static String yearWithMostTurbines(ArrayList<String[]> windData) {
         }
     }
 
-    return years;
+    return years.get(max);
 }
 
 public static void main(String[] args) {
@@ -112,7 +114,7 @@ while (!input.equals("Q")) {
             } 
         
             else if (input.equals("4")) {                
-                System.out.println("Thie year with most wind turbines online is " + countWindTurbines(windData) + " wind turbines.");
+                System.out.println("Thie year with most wind turbines online is " + yearWithMostTurbines(windData));
             } 
 
          }else if (input.equals("5")) {
